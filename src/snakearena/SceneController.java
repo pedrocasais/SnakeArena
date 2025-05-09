@@ -35,4 +35,23 @@ public class SceneController {
   stage.show();
  }
  
+  public void switchToScene3(ActionEvent event) throws IOException {
+  Parent root = FXMLLoader.load(getClass().getResource("SecondView.fxml"));
+  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+  scene = new Scene(root);
+  stage.setScene(scene);
+  stage.show();
+ }
+ 
+ 
+ public void switchToScene4(ActionEvent event) throws IOException {
+  Parent root = FXMLLoader.load(getClass().getResource("gameEasy.fxml"));
+  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+  scene = new Scene(root);
+  stage.setScene(scene);
+  stage.show();
+ }
+
+ 
+ 
 }

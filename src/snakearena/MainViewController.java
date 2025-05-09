@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,19 @@ import javafx.stage.Stage;
 public class MainViewController implements Initializable {
 
     @FXML
-    private void leadBtn(ActionEvent event){
+    private void startBtn(ActionEvent event) {
+
+        SceneController sc = new SceneController();
+        try {
+            sc.switchToScene3(event);
+        } catch (IOException ex) {
+            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    private void leadBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
         try {
@@ -35,6 +48,12 @@ public class MainViewController implements Initializable {
             Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    
+    @FXML
+    private void exitBtn() {
+        exit();
     }
 
     /**
