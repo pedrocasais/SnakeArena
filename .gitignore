@@ -1,6 +1,19 @@
-/build/
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# NetBeans build directories
+build/
+nbbuild/
+dist/
+nbdist/
+
+# NetBeans config files
+nbproject/private/
+nbproject/project.properties
+
+# Gradle local settings
+.nb-gradle/
+
+# Common temp files
+*.class
+*.log
+*.bak
+*.tmp
+*.swp
