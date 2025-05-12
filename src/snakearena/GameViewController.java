@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author pedro
  */
-public class GameOverController implements Initializable {
+public class GameViewController implements Initializable {
 
     /**
      * Initializes the controller class.
