@@ -31,6 +31,9 @@ public class SnakeArena extends Application {
         scene = new Scene(root,1120,720);
         //scene.setFill(Color.BLACK)1;
         stage.setTitle("Snake Arena");
+        
+        Image img = new Image("/resources/images/background.png");
+        stage.getIcons().add(img);
         stage.setScene(scene);
         stage.show();
         System.out.println(stage.widthProperty() + "\t" + stage.heightProperty());
