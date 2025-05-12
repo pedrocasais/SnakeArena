@@ -9,7 +9,7 @@
    <children>
       <BorderPane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <ProgressBar fx:id="myProgressBar" prefWidth="250.0" progress="0.0" BorderPane.alignment="CENTER">
+            <ProgressBar id="progressBar" fx:id="myProgressBar" prefWidth="250.0" progress="0.0" styleClass="progressBar" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin>

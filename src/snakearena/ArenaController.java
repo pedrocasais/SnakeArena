@@ -17,8 +17,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.Initializable;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 public class ArenaController  {    
     
