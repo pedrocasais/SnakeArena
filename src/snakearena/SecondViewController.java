@@ -30,7 +30,7 @@ public class SecondViewController implements Initializable {
 
         SceneController sc = new SceneController();
         try {
-            sc.switchToScene3(event);
+            sc.switchToScene4(event);
         } catch (IOException ex) {
             Logger.getLogger(SecondViewController.class.getName()).log(Level.SEVERE, null, ex);
         }

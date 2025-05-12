@@ -85,7 +85,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="137.0" text="Jogar" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBtn" prefHeight="37.0" prefWidth="137.0" text="Jogar" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font name="Consolas" size="12.0" />
                </font>
