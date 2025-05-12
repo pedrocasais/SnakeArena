@@ -17,20 +17,21 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.fxml.Initializable;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
-public class ArenaController  {
-
+public class ArenaController  {    
+    
     @FXML
     private Canvas gameCanvas;
-
-    private static final int WIDTH = 600;
-    private static final int HEIGHT = 400;
+    public static final int WIDTH = 616;
+    private static final int HEIGHT = 439;
     private static final int ROWS = 20;
     private static final int COLUMNS = ROWS;
-    private static final int SQUARE_SIZE = WIDTH / ROWS;
-    private static final String[] FOODS_IMAGE = new String[]{"/img/ic_orange.png", "/img/ic_apple.png", "/img/ic_cherry.png",
-            "/img/ic_berry.png", "/img/ic_coconut_.png", "/img/ic_peach.png", "/img/ic_watermelon.png", "/img/ic_orange.png",
-            "/img/ic_pomegranate.png"};
+    private static final double SQUARE_SIZE = WIDTH / ROWS;
+    private static final String[] FOODS_IMAGE = new String[]{"/resources/images/ic_orange.png", "/resources/images/ic_apple.png", "/resources/images/ic_cherry.png",
+            "/resources/images/ic_berry.png", "/resources/images/ic_coconut_.png", "/resources/images/ic_peach.png", "/resources/images/ic_watermelon.png", "/resources/images/ic_orange.png",
+            "/resources/images/ic_pomegranate.png"};
 
     private static final int RIGHT = 0;
     private static final int LEFT = 1;
@@ -49,6 +50,7 @@ public class ArenaController  {
 
     @FXML
     public void initialize() {
+
         gc = gameCanvas.getGraphicsContext2D();
 
         gameCanvas.sceneProperty().addListener((obs, oldScene, newScene) -> {

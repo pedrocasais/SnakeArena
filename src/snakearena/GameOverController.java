@@ -6,7 +6,9 @@ package snakearena;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -17,7 +19,7 @@ public class GameOverController implements Initializable {
 
     /**
      * Initializes the controller class.
-     */
+     */    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

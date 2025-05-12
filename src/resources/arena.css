@@ -1,0 +1,4 @@
+.grid-pane {
+    -fx-alignment: center;           /* Centers entire grid content */
+    -fx-background-color: #006633
+}
