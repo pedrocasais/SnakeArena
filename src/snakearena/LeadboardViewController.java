@@ -6,6 +6,8 @@ package snakearena;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,24 +35,33 @@ public class LeadboardViewController implements Initializable {
     @FXML
     TextArea txArea;
 
-    private void readFile() {
+    private ArrayList<String> readFile() {
+
+        ArrayList<String> noems = new ArrayList<>();
         try {
             File file = new File("src/resources/lead.txt");
 
-            if (!file.exists()){
+            if (!file.exists()) {
+
                 file.createNewFile();
                 System.out.println("File -> " + file.getName());
             }
             br = new BufferedReader(new FileReader(file.toString()));
+            String line;
+            int n = 1;
             while (br.ready()) {
-                System.out.println(br.readLine());
-                txArea.appendText(br.readLine());
+
+                line = br.readLine();
+                System.out.println(line);
+                noems.add(line);
+                n++;
             }
             br.close();
+            return noems;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
+        return noems;
     }
 
     private void writeFile(String file, String s) {
@@ -81,8 +92,35 @@ public class LeadboardViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        readFile();
+//        txArea.setText(string);
+        ArrayList<String> a = new ArrayList<>();
+        a = readFile();
+            
+        for(String i : a){
+            System.out.println(i);
+        }
+        
+        a.sort((s1, s2) -> {
+            int n1 = Integer.parseInt(s1.split(",")[1]);
+            int n2 = Integer.parseInt(s2.split(",")[1]);
+            return Integer.compare(n2, n1);
+        });
 
+        int n = 1;
+        
+        
+            
+        for(String i : a){
+            System.out.println(i);
+        }
+        for(String i: a){
+           txArea.appendText(n + ".\t" + i.replace(",", "\t\t") + "\n");
+            n++;
+        }
+        
+        
+        
     }
+    
 
 }
