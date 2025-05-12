@@ -19,11 +19,11 @@ public class SnakeArena extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Imagem.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 
         Scene scene = new Scene(root);
         //scene.setFill(Color.BLACK)1;
-        stage.setTitle("Aula 7");
+        stage.setTitle("Snake Arena");
         stage.setScene(scene);
         stage.show();
     }
