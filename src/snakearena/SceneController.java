@@ -69,4 +69,14 @@ public class SceneController {
         stage.show();
     }
 
+    public void switchToScene6(Stage stage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+
+        scene = new Scene(root, 1120, 720);
+        //scene.setFill(Color.BLACK)1;
+        stage.setTitle("Snake Arena");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
