@@ -9,13 +9,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -49,7 +46,7 @@ public class ImagemController implements Initializable {
                     if (progress < 1.0) {
                         progress += 0.01;
                         myProgressBar.setProgress(progress);
-                        System.out.println("progress -> "+myProgressBar.getProgress());
+                        System.out.printf("progress -> %.2f\n",myProgressBar.getProgress());
                         if (myProgressBar.getProgress() >= 1.0) {
                             Stage stage = (Stage) myProgressBar.getScene().getWindow();
                             switchScene(stage);

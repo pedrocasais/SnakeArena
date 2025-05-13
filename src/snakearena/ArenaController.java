@@ -1,5 +1,8 @@
 package snakearena;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,11 +15,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-
-import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.fxml.Initializable;
 
 public class ArenaController  {    
     

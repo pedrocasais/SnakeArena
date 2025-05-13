@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 
 /**

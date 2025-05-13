@@ -7,21 +7,15 @@ package snakearena;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -39,7 +33,7 @@ public class LeadboardViewController implements Initializable {
 
         ArrayList<String> noems = new ArrayList<>();
         try {
-            File file = new File("src/resources/lead.txt");
+            File file = new File("ola.txt");
 
             if (!file.exists()) {
 
@@ -48,13 +42,11 @@ public class LeadboardViewController implements Initializable {
             }
             br = new BufferedReader(new FileReader(file.toString()));
             String line;
-            int n = 1;
             while (br.ready()) {
 
                 line = br.readLine();
                 System.out.println(line);
                 noems.add(line);
-                n++;
             }
             br.close();
             return noems;
@@ -64,10 +56,27 @@ public class LeadboardViewController implements Initializable {
         return noems;
     }
 
-    private void writeFile(String file, String s) {
+    public void writeFile(String s, String cor, String modo) {
+        Calendar date = Calendar.getInstance(Locale.ENGLISH);
+        StringBuilder sB = new StringBuilder();
+        ArrayList<String> a = new ArrayList<>();
+
         try {
-            bw = new BufferedWriter(new FileWriter(file));
-            bw.write(s);
+            File file = new File("ola.txt");
+            a = readFile();
+            bw = new BufferedWriter(new FileWriter(file.toString()));
+            sB.append(s);
+            sB.append("," + date.getTime());
+            sB.append("," + cor);
+            sB.append("," + modo);
+            System.out.println(sB);
+            a.add(sB.toString());
+
+            for (String string : a) {
+                bw.write(string);
+                bw.write("\n");
+            }
+
             bw.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -93,13 +102,13 @@ public class LeadboardViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        txArea.setText(string);
+        writeFile("pedro,3000", "amarelo", "easy");
         ArrayList<String> a = new ArrayList<>();
         a = readFile();
-            
-        for(String i : a){
+
+        /* for (String i : a) {
             System.out.println(i);
-        }
-        
+        }*/
         a.sort((s1, s2) -> {
             int n1 = Integer.parseInt(s1.split(",")[1]);
             int n2 = Integer.parseInt(s2.split(",")[1]);
@@ -107,20 +116,15 @@ public class LeadboardViewController implements Initializable {
         });
 
         int n = 1;
-        
-        
-            
-        for(String i : a){
+
+        /* for (String i : a) {
             System.out.println(i);
-        }
-        for(String i: a){
-           txArea.appendText(n + ".\t" + i.replace(",", "\t\t") + "\n");
+        }*/
+        for (String i : a) {
+            txArea.appendText(n + ".\t" + i.replace(",", "\t\t") + "\n");
             n++;
         }
-        
-        
-        
+
     }
-    
 
 }

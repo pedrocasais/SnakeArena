@@ -6,16 +6,13 @@ package snakearena;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javax.xml.transform.Source;
 
 /**
  * FXML Controller class
@@ -81,6 +78,10 @@ public class GameViewController implements Initializable {
 
             drawMap();
         });
+
+        // save on file
+        LeadboardViewController lc = new LeadboardViewController();
+        lc.writeFile("pedro,1555000", "red", "hard");
     }
 
 }
