@@ -8,3 +8,20 @@
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
+
+.textarea .content{
+    -fx-background-image: url("images/fundoleadboard.png");
+}
+
+.text-area{
+    -fx-text-fill: #eaddbc;
+    -fx-border-width: 3px;
+    -fx-background-color: #355334;
+
+}
+
+
+
+.text-area > .scroll-pane{
+    -fx-vbar-policy: never;
+}

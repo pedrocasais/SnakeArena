@@ -9,14 +9,17 @@
 
 <BorderPane id="leadboard" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../resources/leadboardview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.LeadboardViewController">
    <center>
-      <TextArea fx:id="txArea" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TextArea fx:id="txArea" editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@../resources/leadboardview.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
          </BorderPane.margin>
+         <font>
+            <Font name="Consolas Bold" size="14.0" />
+         </font>
       </TextArea>
    </center>
    <top>
-      <Label text="LeadBoard" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label text="LeadBoard" textFill="#eaddbc" BorderPane.alignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="36.0" />
          </font>
@@ -26,13 +29,16 @@
       </Label>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#handleBtn" text="Menu Inicial" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#handleBtn" stylesheets="@../resources/style.css" text="Menu Inicial" textFill="#eaddbc" BorderPane.alignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="18.0" />
          </font>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </Button>
    </bottom>
 </BorderPane>
