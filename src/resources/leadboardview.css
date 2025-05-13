@@ -11,6 +11,7 @@
 
 .textarea .content{
     -fx-background-image: url("images/fundoleadboard.png");
+
 }
 
 .text-area{
@@ -24,4 +25,5 @@
 
 .text-area > .scroll-pane{
     -fx-vbar-policy: never;
+     -fx-padding: 0;
 }

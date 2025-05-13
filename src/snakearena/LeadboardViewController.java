@@ -124,6 +124,7 @@ public class LeadboardViewController implements Initializable {
             txArea.appendText(n + ".\t" + i.replace(",", "\t\t") + "\n");
             n++;
         }
+        txArea.positionCaret(0);
 
     }
 
