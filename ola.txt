@@ -61,3 +61,6 @@ pedro,3000,Tue May 13 19:45:59 WEST 2025,amarelo,easy
 pedro,3000,Tue May 13 19:46:26 WEST 2025,amarelo,easy
 pedro,3000,Tue May 13 22:20:53 WEST 2025,amarelo,easy
 pedro,3000,Thu May 15 16:47:30 WEST 2025,amarelo,easy
+pedro,3000,Thu May 15 16:58:01 WEST 2025,amarelo,easy
+pedro,3000,Thu May 15 16:58:07 WEST 2025,amarelo,easy
+pedro,3000,Thu May 15 17:13:23 WEST 2025,amarelo,easy

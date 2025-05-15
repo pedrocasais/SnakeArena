@@ -40,7 +40,7 @@ public class SecondViewController implements Initializable {
     private void handleBtn2(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        sc.switchToScene(event, "GameView.fxml");
+        sc.switchToScene(event, "MainView.fxml");
         Stage thisStage = (Stage) comboBox.getScene().getWindow();
         thisStage.close();
         thisStage = null;
