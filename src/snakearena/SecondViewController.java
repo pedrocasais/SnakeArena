@@ -28,11 +28,7 @@ public class SecondViewController implements Initializable {
     private void handleBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene4(event);
-        } catch (IOException ex) {
-            Logger.getLogger(SecondViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sc.switchToScene(event, "MainView.fxml");
 
     }
 
@@ -40,11 +36,7 @@ public class SecondViewController implements Initializable {
     private void handleBtn2(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene1(event);
-        } catch (IOException ex) {
-            Logger.getLogger(SecondViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sc.switchToScene(event, "GameView.fxml");
 
     }
 

@@ -25,11 +25,7 @@ public class MainViewController implements Initializable {
     private void startBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene3(event);
-        } catch (IOException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sc.switchToScene(event, "SecondView.fxml");
 
     }
 
@@ -37,12 +33,7 @@ public class MainViewController implements Initializable {
     private void leadBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene2(event);
-        } catch (IOException ex) {
-            Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        sc.switchToScene(event, "LeadboardView.fxml");
     }
     
     

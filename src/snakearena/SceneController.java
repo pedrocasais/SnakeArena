@@ -5,15 +5,21 @@
 package snakearena;
 
 import java.io.IOException;
+import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SceneController {
 
+    /*
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -50,7 +56,7 @@ public class SceneController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root,858,847);
         stage.setScene(scene);
-        stage.show();*/
+        stage.show();
         Parent root = FXMLLoader.load(getClass().getResource("arena.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root, 858, 847);
@@ -78,5 +84,32 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
+    */
+    
+    public void switchToScene(ActionEvent event, String s){
+        Random r = new Random();
 
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+        int width = (int) screenBounds.getWidth();
+        int height = (int) screenBounds.getHeight();
+        
+        
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                    getClass().getResource(s)
+            );
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.NONE);
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Snake Arena");
+            stage.setX(height);
+            stage.setScene(new Scene(root));
+            stage.setX(r.nextInt(width - (int) stage.getWidth()));
+            stage.setY(r.nextInt(height - (int) stage.getHeight()));
+            stage.show();
+    }catch(Exception ex){
+        
+    }
+    }
 }

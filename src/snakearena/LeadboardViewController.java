@@ -88,11 +88,7 @@ public class LeadboardViewController implements Initializable {
     private void handleBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene1(event);
-        } catch (IOException ex) {
-            Logger.getLogger(LeadboardViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sc.switchToScene(event, "MainView.fxml");
     }
 
     /**
