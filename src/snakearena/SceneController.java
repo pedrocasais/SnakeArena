@@ -12,10 +12,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import static snakearena.SnakeArena.scene;
 
 public class SceneController {
 
@@ -84,16 +86,15 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
     }
-    */
-    
-    public void switchToScene(ActionEvent event, String s){
+     */
+    public void switchToScene(ActionEvent event, String s) {
         Random r = new Random();
 
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         int width = (int) screenBounds.getWidth();
         int height = (int) screenBounds.getHeight();
-        
-        
+        Image img = new Image("/resources/images/background.png");
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(
                     getClass().getResource(s)
@@ -103,13 +104,17 @@ public class SceneController {
             stage.initModality(Modality.NONE);
             stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("Snake Arena");
-            stage.setX(height);
+            stage.getIcons().add(img);
+
+            //stage.setX(height);
             stage.setScene(new Scene(root, 1120, 720));
-            stage.setX(r.nextInt(width - (int) stage.getWidth()));
-            stage.setY(r.nextInt(height - (int) stage.getHeight()));
+            //stage.setX(r.nextInt(width - (int) stage.getWidth()));
+            //stage.setY(r.nextInt(height - (int) stage.getHeight()));
+                
+            stage.centerOnScreen();
             stage.show();
-    }catch(Exception ex){
-        
-    }
+        } catch (Exception ex) {
+
+        }
     }
 }
