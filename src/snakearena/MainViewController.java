@@ -13,6 +13,8 @@ import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -22,11 +24,16 @@ import javafx.fxml.Initializable;
 public class MainViewController implements Initializable {
 
     @FXML
+    private Button btn1;
+
+    @FXML
     private void startBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
         sc.switchToScene(event, "SecondView.fxml");
-
+        Stage thisStage = (Stage) btn1.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
     }
 
     @FXML
@@ -34,11 +41,16 @@ public class MainViewController implements Initializable {
 
         SceneController sc = new SceneController();
         sc.switchToScene(event, "LeadboardView.fxml");
+        Stage thisStage = (Stage) btn1.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
     }
-    
-    
+
     @FXML
     private void exitBtn() {
+        Stage thisStage = (Stage) btn1.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
         exit();
     }
 

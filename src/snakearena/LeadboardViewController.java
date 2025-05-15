@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -89,6 +90,9 @@ public class LeadboardViewController implements Initializable {
 
         SceneController sc = new SceneController();
         sc.switchToScene(event, "MainView.fxml");
+        Stage thisStage = (Stage) txArea.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
     }
 
     /**

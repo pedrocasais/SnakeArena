@@ -15,6 +15,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -250,11 +251,11 @@ public class GameViewController implements Initializable {
             System.out.println("gameover");
             timeline.stop();
             SceneController sc = new SceneController();
-            try {
-                sc.switchToScene6((Stage) canvas.getScene().getWindow());
-            } catch (IOException ex) {
-                Logger.getLogger(SecondViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ActionEvent e = new ActionEvent();
+            sc.switchToScene(e, "gameOver.fxml");
+            Stage thisStage = (Stage) canvas.getScene().getWindow();
+            thisStage.close();
+            thisStage = null;
             return;
         }
 

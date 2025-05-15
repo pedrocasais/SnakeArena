@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressBar;
@@ -24,21 +25,15 @@ public class ImagemController implements Initializable {
 
     private double progress = 0.0;
 
-    
-    private void switchScene(Stage stage) {
+    private void switchScene(ActionEvent e) {
 
         SceneController sc = new SceneController();
-        try {
-            sc.switchToScene5(stage);
-        } catch (IOException ex) {
-            Logger.getLogger(SecondViewController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sc.switchToScene(e, "MainView.fxml");
 
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
 
         // Timeline para animar a progress bar durante 3 segundos
         Timeline timeline = new Timeline(
@@ -46,10 +41,14 @@ public class ImagemController implements Initializable {
                     if (progress < 1.0) {
                         progress += 0.01;
                         myProgressBar.setProgress(progress);
-                        System.out.printf("progress -> %.2f\n",myProgressBar.getProgress());
+                        System.out.printf("progress -> %.2f\n", myProgressBar.getProgress());
                         if (myProgressBar.getProgress() >= 1.0) {
-                            Stage stage = (Stage) myProgressBar.getScene().getWindow();
-                            switchScene(stage);
+                            switchScene(e);
+
+                            Stage thisStage = (Stage) myProgressBar.getScene().getWindow();
+                            thisStage.close();
+                            thisStage = null;
+
                         }
                         //myLabel.setText((int)(progress * 100) + "%");
                     }

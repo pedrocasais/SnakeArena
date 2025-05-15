@@ -104,7 +104,7 @@ public class SceneController {
             stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("Snake Arena");
             stage.setX(height);
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root, 1120, 720));
             stage.setX(r.nextInt(width - (int) stage.getWidth()));
             stage.setY(r.nextInt(height - (int) stage.getHeight()));
             stage.show();

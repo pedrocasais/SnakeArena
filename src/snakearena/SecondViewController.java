@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -28,7 +29,10 @@ public class SecondViewController implements Initializable {
     private void handleBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        sc.switchToScene(event, "MainView.fxml");
+        sc.switchToScene(event, "arena.fxml");
+        Stage thisStage = (Stage) comboBox.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
 
     }
 
@@ -37,6 +41,9 @@ public class SecondViewController implements Initializable {
 
         SceneController sc = new SceneController();
         sc.switchToScene(event, "GameView.fxml");
+        Stage thisStage = (Stage) comboBox.getScene().getWindow();
+        thisStage.close();
+        thisStage = null;
 
     }
 
