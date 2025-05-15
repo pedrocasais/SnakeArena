@@ -16,8 +16,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -39,7 +41,7 @@ import javafx.util.Duration;
  *
  * @author pedro
  */
-public class GameViewController implements Initializable {
+public class GameViewController implements Initializable, EventHandler<KeyEvent> {
 
     /**
      * Initializes the controller class.
@@ -48,6 +50,20 @@ public class GameViewController implements Initializable {
     private double width;
     private double height;
     private double SQUARE_SIZE;
+    private static final int ROWS = 20;
+    private static final int COLUMNS = ROWS;
+
+    private Timeline timeline;
+
+    private double x = 300;
+    private double y = 300;
+    private ArrayList<Point> corpo = new ArrayList<>();
+    Snake s = new Snake(x, y, corpo);
+
+    @FXML
+    private Canvas canvas;
+    @FXML
+    private GraphicsContext gc;
 
     public void getScreenSize(Stage stage) {
 
@@ -60,25 +76,6 @@ public class GameViewController implements Initializable {
             System.out.println("Stage is null in GameViewController initialize method.");
         }
     }
-
-    private static final int ROWS = 20;
-    private static final int COLUMNS = ROWS;
-
-    private static final int RIGHT = 0;
-    private static final int LEFT = 1;
-    private static final int UP = 2;
-    private static final int DOWN = 3;
-    private Timeline timeline;
-
-    private double x = 300;
-    private double y = 300;
-    private ArrayList<Point> corpo = new ArrayList<>();
-    Snake s = new Snake(x, y, corpo);
-
-    @FXML
-    private Canvas canvas;
-    @FXML
-    private GraphicsContext gc;
 
     private void drawMap() {
         //System.out.println("olbaqauqi -> " + width);
@@ -114,7 +111,7 @@ public class GameViewController implements Initializable {
         int x = 10;
         int y = 10;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i++) {
             Point p = new Point(x, y);
             c.add(p);
             x -= 1;
@@ -122,9 +119,15 @@ public class GameViewController implements Initializable {
         return c;
     }
 
+    private static final int RIGHT = 0;
+    private static final int LEFT = 1;
+    private static final int UP = 2;
+    private static final int DOWN = 3;
+
     private int currentDirection = RIGHT;
 
     private void updateSnakePosition() {
+
         ArrayList<Point> body = s.getCorpo();
         Point head = body.get(0);
         int x = head.x;
@@ -180,9 +183,13 @@ public class GameViewController implements Initializable {
         }
     }
 
+    
+    private void genFui
+    
+    
     private boolean gameOver() {
         Point head = s.getCorpo().get(0);
-
+        System.out.println("x-> "+head.x+"y-> "+head.y);
         // Check if snake hits the wall
         if (head.x < 0 || head.x >= COLUMNS || head.y < 0 || head.y >= ROWS) {
             return true;
@@ -220,30 +227,30 @@ public class GameViewController implements Initializable {
 
             gc = canvas.getGraphicsContext2D();
 
+            Scene sc = stage.getScene();
+            sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
+
+            /*
             canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {
                 if (newScene != null) {
                     newScene.setOnKeyPressed(this::handleKeyPress);
                 }
             });
-
+             */
             timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
             timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
 
-            /*Scene sc = stage.getScene();
-            sc.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent e) {
-                    move(e, s.getCorpo());
-
-                }
-            });
-             */
         });
 
         // save on file
         //LeadboardViewController lc = new LeadboardViewController();
         //lc.writeFile("pedro,1555000", "red", "hard");
+    }
+
+    public void handle(KeyEvent e) {
+        System.out.println(e.getCode().toString());
+        handleKeyPress(e);
     }
 
     private void run() {
