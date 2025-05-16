@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="leadboard" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/leadboardview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.GameViewController">
+<BorderPane id="leadboard" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/leadboardview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.GameViewController" fx:id="borderPane">
    <center>
       <Canvas fx:id="canvas" height="400" width="600" BorderPane.alignment="CENTER" />
    </center>

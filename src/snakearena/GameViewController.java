@@ -70,8 +70,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
-            width = stage.getWidth();
-            height = stage.getHeight();
+            width = stage.getWidth() - 100;
+            height = stage.getHeight() - 100;
             SQUARE_SIZE = Math.min(width / ROWS, height / ROWS);
             System.out.println("Stage width: " + width + ", height: " + height);
         } else {
@@ -243,6 +243,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
                 pnew.y = p.y;
                 s.add(pnew);
             }
+            score();
             return true;
         }
 
@@ -284,6 +285,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             //stage.setHeight(height + SQUARE_SIZE);
             canvas.setFocusTraversable(true);
             canvas.requestFocus();
+            
 
             canvas.setWidth(width);
             canvas.setHeight(height);
@@ -297,7 +299,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             s.setTam(s.getCorpo().size());
 
             gc = canvas.getGraphicsContext2D();
-            
+
+
             Scene sc = stage.getScene();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
             genFruit();
