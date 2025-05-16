@@ -299,7 +299,6 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             gc = canvas.getGraphicsContext2D();
             
             Scene sc = stage.getScene();
-            stage.centerOnScreen();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
             genFruit();
 
