@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.A;
 import static javafx.scene.input.KeyCode.D;
@@ -157,7 +159,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         KeyCode code = event.getCode();
         switch (code) {
             case RIGHT, D -> {
-                System.out.println("here");
+                //      System.out.println("here");
                 if (currentDirection != LEFT) {
                     currentDirection = RIGHT;
                 }
@@ -182,14 +184,51 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             }
         }
     }
+    private int fruits = 0;
+    private Image img = new Image(getClass().getResource("/resources/images/ic_berry.png").toString());
+    private Random r = new Random();
+    private int n1;
+    private int n2;
 
-    
-    private void genFui
-    
-    
+    private void genFruit() {
+
+        do {
+            n1 = r.nextInt(ROWS);
+            n2 = r.nextInt(COLUMNS);
+            fruits++;
+        } while (fruits < 2);
+//        gc.drawImage(img, n1, n2, SQUARE_SIZE, SQUARE_SIZE);
+    }
+
+    private void drawFruit() {
+        //System.out.println("n1 -> " + n1 + " n2 -> " + n2);
+
+        gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+
+    }
+
+    private boolean checkFruit() {
+        Point head = s.getCorpo().get(0);
+
+        System.out.println("tam -> " + s.getTam());
+
+        Point last = s.getCorpo().get(s.getTam());
+        if (head.x == n1 && head.y == n2) {
+            
+            return true;
+        }
+        return false;
+    }
+
+    private int score = 0;
+
+    private void score() {
+        score += 5;
+    }
+
     private boolean gameOver() {
         Point head = s.getCorpo().get(0);
-        System.out.println("x-> "+head.x+"y-> "+head.y);
+        //System.out.println("x-> "+head.x+"y-> "+head.y);
         // Check if snake hits the wall
         if (head.x < 0 || head.x >= COLUMNS || head.y < 0 || head.y >= ROWS) {
             return true;
@@ -199,6 +238,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         ArrayList<Point> body = s.getCorpo();
         for (int i = 1; i < body.size(); i++) {
             if (head.equals(body.get(i))) {
+
                 return true;
             }
         }
@@ -225,10 +265,13 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             //drawSnake("FFFFFF", c);
             s.setCorpo(firstSnake());
 
+            s.setTam(s.getCorpo().size());
+            
             gc = canvas.getGraphicsContext2D();
 
             Scene sc = stage.getScene();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
+            genFruit();
 
             /*
             canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {
@@ -249,7 +292,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     }
 
     public void handle(KeyEvent e) {
-        System.out.println(e.getCode().toString());
+        //System.out.println(e.getCode().toString());
         handleKeyPress(e);
     }
 
@@ -269,6 +312,12 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         drawMap();
         updateSnakePosition();
         drawSnake("FFFFFF", s.getCorpo());
+        drawFruit();
+        if (checkFruit()) {
+            genFruit();
+        }
+
+        System.out.println("Score -> " + score);
         //s.setCorpo(c);
     }
 
