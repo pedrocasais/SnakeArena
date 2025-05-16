@@ -34,7 +34,7 @@ public class LeadboardViewController implements Initializable {
 
         ArrayList<String> noems = new ArrayList<>();
         try {
-            File file = new File("ola.txt");
+            File file = new File("src/resources/lead.txt");
 
             if (!file.exists()) {
 
@@ -63,8 +63,9 @@ public class LeadboardViewController implements Initializable {
         ArrayList<String> a = new ArrayList<>();
 
         try {
-            File file = new File("ola.txt");
             a = readFile();
+            File file = new File("src/resources/lead.txt");
+
             bw = new BufferedWriter(new FileWriter(file.toString()));
             sB.append(s);
             sB.append("," + date.getTime());
@@ -102,7 +103,8 @@ public class LeadboardViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 //        txArea.setText(string);
-        writeFile("pedro,3000", "amarelo", "easy");
+        //writeFile("pedro,3000", "amarelo", "easy");
+        readFile();
         ArrayList<String> a = new ArrayList<>();
         a = readFile();
 
