@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane id="leadboard" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/leadboardview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.GameViewController">
    <center>
       <Canvas fx:id="canvas" height="400" width="600" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <FlowPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Score:" textFill="#eaddbc">
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <FlowPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label text="asasasa" textFill="#eaddbc">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Consolas Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+   </top>
 </BorderPane>
