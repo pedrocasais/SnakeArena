@@ -67,18 +67,15 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private Canvas canvas;
     @FXML
     private GraphicsContext gc;
-<<<<<<< HEAD
-    
-    @FXML private Label showscore;
-    
-=======
+
+    @FXML
+    private Label showscore;
 
     private LeadboardViewController lead = new LeadboardViewController();
     private String nome;
     private String cor;
     private String game;
 
->>>>>>> bb7009c18976c0cc9f1fd6f228144e3660c31659
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
@@ -214,7 +211,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     }
 
     private void chooseImg() {
-        String[] arr = {"/resources/images/ic_berry.png", "/resources/images/ic_apple.png", "/resources/images/ic_cherry.png", "/resources/images/ic_coconut.png", "/resources/images/ic_orange.png",
+        String[] arr = {"/resources/images/ic_berry.png", "/resources/images/ic_apple.png", "/resources/images/ic_cherry.png", "/resources/images/ic_coconut_.png", "/resources/images/ic_orange.png",
             "/resources/images/ic_peach.png", "/resources/images/ic_tomato.png", "/resources/images/ic_watermelon.png", "/resources/images/ic_pomegranate.png"};
         int n = r.nextInt(arr.length);
         img = new Image(arr[n]);
@@ -229,7 +226,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     }
 
     private boolean checkFruit() {
-        
+
         Point head = s.getCorpo().get(0);
 
         System.out.println("tam -> " + s.getTam());
