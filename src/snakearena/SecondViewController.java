@@ -90,7 +90,7 @@ public class SecondViewController implements Initializable {
             stage.getIcons().add(img);
 
             // Aceder ao controlador da nova cena
-            GameOverController controller = fxmlLoader.getController();
+            GameViewController controller = fxmlLoader.getController();
 
             controller.setCorSelecionada(ColorP.getValue());
 

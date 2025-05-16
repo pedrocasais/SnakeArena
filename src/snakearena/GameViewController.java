@@ -74,10 +74,13 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     
     private LeadboardViewController lead = new LeadboardViewController();
     private String nome;
-    private String cor;
+    private Color cor;
     private String game;
 
-
+    public void setCorSelecionada(Color cor) {
+        this.cor = cor;
+    }
+    
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
@@ -353,7 +356,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         if (gameOver()) {
             System.out.println("gameover");
 
-            lead.writeFile(nome + "," + score, cor, game);
+            lead.writeFile(nome + "," + score, cor.toString(), game);
 
             timeline.stop();
             SceneController sc = new SceneController();
@@ -367,7 +370,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
         drawMap();
         updateSnakePosition();
-        drawSnake("FFFFFF", s.getCorpo());
+        drawSnake(cor.toString(), s.getCorpo());
         drawFruit();
         if (checkFruit()) {
             genFruit();
