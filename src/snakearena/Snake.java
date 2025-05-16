@@ -57,5 +57,8 @@ public class Snake {
     public void setCorpo(ArrayList<Point> corpo) {
         this.corpo = new ArrayList<>(corpo);
     }
-
+    
+    public void add(Point p){
+        corpo.add(p);
+    }
 }

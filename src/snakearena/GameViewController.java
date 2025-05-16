@@ -212,11 +212,40 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
         System.out.println("tam -> " + s.getTam());
 
-        Point last = s.getCorpo().get(s.getTam());
+        int last = s.getCorpo().size();
+        Point p = s.getCorpo().get(last - 1);
+        int p1 = p.x;
+        System.out.println("tam2 -> " + last);
         if (head.x == n1 && head.y == n2) {
-            
+            if (currentDirection == UP) {
+                s.setTam(last + 1);
+                Point pnew = new Point();
+                pnew.x = p.x;
+                pnew.y = p.y - 1;
+                s.add(pnew);
+            } else if (currentDirection == DOWN) {
+                s.setTam(last + 1);
+                Point pnew = new Point();
+                pnew.x = p.x;
+                pnew.y = p.y + 1;
+                s.add(pnew);
+            }
+            if (currentDirection == LEFT) {
+                s.setTam(last + 1);
+                Point pnew = new Point();
+                pnew.x = p.x - 1;
+                pnew.y = p.y;
+                s.add(pnew);
+            } else if (currentDirection == RIGHT) {
+                s.setTam(last + 1);
+                Point pnew = new Point();
+                pnew.x = p.x + 1;
+                pnew.y = p.y;
+                s.add(pnew);
+            }
             return true;
         }
+
         return false;
     }
 
@@ -266,10 +295,11 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             s.setCorpo(firstSnake());
 
             s.setTam(s.getCorpo().size());
-            
-            gc = canvas.getGraphicsContext2D();
 
+            gc = canvas.getGraphicsContext2D();
+            
             Scene sc = stage.getScene();
+            stage.centerOnScreen();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
             genFruit();
 
