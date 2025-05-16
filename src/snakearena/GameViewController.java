@@ -68,14 +68,24 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     @FXML
     private GraphicsContext gc;
 
+<<<<<<< Updated upstream
     @FXML
     private Label showscore;
 
+=======
+    
+    @FXML private Label showscore;
+    
+>>>>>>> Stashed changes
     private LeadboardViewController lead = new LeadboardViewController();
     private String nome;
     private String cor;
     private String game;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
@@ -122,7 +132,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         int x = 10;
         int y = 10;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 3; i++) {
             Point p = new Point(x, y);
             c.add(p);
             x -= 1;
