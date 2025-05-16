@@ -197,7 +197,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         }
     }
     private int fruits = 0;
-    private Image img = new Image(getClass().getResource("/resources/images/ic_berry.png").toString());
+    private Image img;
     private Random r = new Random();
     private int n1;
     private int n2;
@@ -207,9 +207,18 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         do {
             n1 = r.nextInt(ROWS);
             n2 = r.nextInt(COLUMNS);
+            chooseImg();
             fruits++;
-        } while (fruits < 2);
+        } while (fruits < 4);
 //        gc.drawImage(img, n1, n2, SQUARE_SIZE, SQUARE_SIZE);
+    }
+
+    private void chooseImg() {
+        String[] arr = {"/resources/images/ic_berry.png", "/resources/images/ic_apple.png", "/resources/images/ic_cherry.png", "/resources/images/ic_coconut.png", "/resources/images/ic_orange.png",
+            "/resources/images/ic_peach.png", "/resources/images/ic_tomato.png", "/resources/images/ic_watermelon.png", "/resources/images/ic_pomegranate.png"};
+        int n = r.nextInt(arr.length);
+        img = new Image(arr[n]);
+
     }
 
     private void drawFruit() {
