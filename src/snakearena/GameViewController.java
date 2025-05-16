@@ -67,6 +67,11 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     @FXML
     private GraphicsContext gc;
 
+    private LeadboardViewController lead = new LeadboardViewController();
+    private String nome;
+    private String cor;
+    private String game;
+
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
@@ -285,7 +290,6 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             //stage.setHeight(height + SQUARE_SIZE);
             canvas.setFocusTraversable(true);
             canvas.requestFocus();
-            
 
             canvas.setWidth(width);
             canvas.setHeight(height);
@@ -299,7 +303,6 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             s.setTam(s.getCorpo().size());
 
             gc = canvas.getGraphicsContext2D();
-
 
             Scene sc = stage.getScene();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
@@ -331,6 +334,9 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private void run() {
         if (gameOver()) {
             System.out.println("gameover");
+
+            lead.writeFile(nome + "," + score, cor, game);
+
             timeline.stop();
             SceneController sc = new SceneController();
             ActionEvent e = new ActionEvent();

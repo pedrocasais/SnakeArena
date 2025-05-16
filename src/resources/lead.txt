@@ -1,7 +1,1 @@
-pedro,3000
-pedro2,3500
-p2,1000
-p,8000
-p222,50
-p111,6500
-psdoa,10000
+null,15,Fri May 16 15:31:22 WEST 2025,null,easy
