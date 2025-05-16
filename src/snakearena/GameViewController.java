@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import static javafx.scene.input.KeyCode.A;
@@ -66,7 +67,9 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private Canvas canvas;
     @FXML
     private GraphicsContext gc;
-
+    
+    @FXML private Label showscore;
+    
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
@@ -208,6 +211,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     }
 
     private boolean checkFruit() {
+        
         Point head = s.getCorpo().get(0);
 
         System.out.println("tam -> " + s.getTam());
@@ -244,6 +248,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
                 s.add(pnew);
             }
             score();
+            String ss = Integer.toString(score);
+            showscore.setText(ss);
             return true;
         }
 
@@ -253,7 +259,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private int score = 0;
 
     private void score() {
-        score += 5;
+        score += 1;
     }
 
     private boolean gameOver() {
