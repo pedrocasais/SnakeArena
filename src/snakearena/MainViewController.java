@@ -40,7 +40,7 @@ public class MainViewController implements Initializable {
     private void leadBtn(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        sc.switchToScene(event, "LeadboardView.fxml");
+        sc.switchToScene(event, "leadboardView.fxml");
         Stage thisStage = (Stage) btn1.getScene().getWindow();
         thisStage.close();
         thisStage = null;

@@ -121,7 +121,7 @@ public class SceneController {
         }
     }
 
-    public void switchToScene2(ActionEvent event, String s,Color cor) {
+    public void switchToScene2(ActionEvent event, String s,Color cor, String nome,String gameMode) {
         Random r = new Random();
 
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
@@ -143,7 +143,7 @@ public class SceneController {
             // Aceder ao controlador da nova cena
             GameViewController controller = fxmlLoader.getController();
 
-            controller.setCorSelecionada(cor);
+            controller.recieve(cor,nome,gameMode);
 
             //stage.setX(height);
             stage.setScene(new Scene(root, 1120, 720));

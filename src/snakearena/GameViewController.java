@@ -54,8 +54,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private double width;
     private double height;
     private double SQUARE_SIZE;
-    private static final int ROWS = 20;
-    private static final int COLUMNS = ROWS;
+    private static int ROWS;
+    private static int COLUMNS;
 
     private Timeline timeline;
 
@@ -71,26 +71,34 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
     @FXML
     private Label showscore;
-    
-    
+
     private LeadboardViewController lead = new LeadboardViewController();
     private String nome;
     private Color cor;
     private String game;
-    
-    
-    public void setCorSelecionada(Color cor) {
+
+    public void recieve(Color cor, String nome, String gameMode) {
         this.cor = cor;
+        this.nome = nome;
+        this.game = gameMode;
+
+        System.out.println(game);
+        if (game.equals("Hard")) {
+            ROWS = 30;
+            COLUMNS = 30;
+        } else {
+            ROWS =15;
+            COLUMNS = 15;
+        }
+
     }
 
-
-    
     public void getScreenSize(Stage stage) {
 
         if (stage != null) {
             width = stage.getWidth() - 100;
             height = stage.getHeight() - 100;
-            SQUARE_SIZE = Math.min(width / ROWS, height / ROWS);
+            SQUARE_SIZE = Math.min(width / ROWS, height / COLUMNS);
             System.out.println("Stage width: " + width + ", height: " + height);
         } else {
             System.out.println("Stage is null in GameViewController initialize method.");
@@ -113,7 +121,9 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
         for (Point p : c) {
             gc.setFill(Color.web(Cor));
-            gc.fillOval(p.x * (SQUARE_SIZE), p.y * (SQUARE_SIZE), SQUARE_SIZE, SQUARE_SIZE);
+            //gc.fillOval(p.x * (SQUARE_SIZE), p.y * (SQUARE_SIZE), SQUARE_SIZE, SQUARE_SIZE);
+            gc.fillRoundRect(p.getX() * SQUARE_SIZE, p.getY() * SQUARE_SIZE, SQUARE_SIZE - 1,
+                    SQUARE_SIZE - 1, ROWS, COLUMNS);
         }
 
         /*        for (int i = 0; i < 4; i++) {
@@ -290,7 +300,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         Point head = s.getCorpo().get(0);
         //System.out.println("x-> "+head.x+"y-> "+head.y);
         // Check if snake hits the wall
-        if (head.x < 0 || head.x >= COLUMNS || head.y < 0 || head.y >= ROWS) {
+        if (head.x < 1 || head.x >= COLUMNS - 1 || head.y < 1 || head.y >= ROWS - 1) {
             return true;
         }
 
@@ -308,6 +318,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Platform.runLater(() -> {
             Stage stage = (Stage) canvas.getScene().getWindow();
             getScreenSize(stage);
@@ -316,8 +327,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             canvas.setFocusTraversable(true);
             canvas.requestFocus();
 
-            canvas.setWidth(width);
-            canvas.setHeight(height);
+            canvas.setWidth(width-SQUARE_SIZE);
+            canvas.setHeight(height-SQUARE_SIZE);
             getScreenSize(stage);
 
             //ArrayList<Point> c = new ArrayList<>();
@@ -328,11 +339,11 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             s.setTam(s.getCorpo().size());
 
             gc = canvas.getGraphicsContext2D();
-
+            
             Scene sc = stage.getScene();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
             genFruit();
-            
+
             //System.out.println("AQUIR _>>>>>>>>>>>>>>>> "+cor.getValue());
 
             /*

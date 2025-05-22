@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -40,13 +41,23 @@ public class SecondViewController implements Initializable {
     private ColorPicker ColorP;
 
     @FXML
+    private TextField tF;
+    
+    
+    
+    
+    @FXML
     private void handleBtn(ActionEvent event) {
 
+        if (tF.getText() == null) {
+            tF.setText("Nome Obrigatório!");
+        }
+        
         Color cor = ColorP.getValue();
         System.out.println(cor.toString());
 
         SceneController sc = new SceneController();
-        sc.switchToScene2(event, "arena.fxml", cor);
+        sc.switchToScene2(event, "arena.fxml", cor,tF.getText(),comboBox.getValue());
         Stage thisStage = (Stage) comboBox.getScene().getWindow();
         thisStage.close();
         thisStage = null;
