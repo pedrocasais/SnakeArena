@@ -36,8 +36,8 @@ public class SnakeArena extends Application {
 
         Media sound = new Media(getClass().getResource("/resources/music.mp3").toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        //mediaPlayer.setAutoPlay(true);
-        //mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         //mediaPlayer.play();
             
         stage.show();

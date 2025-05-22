@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -41,8 +42,11 @@ public class SecondViewController implements Initializable {
     @FXML
     private void handleBtn(ActionEvent event) {
 
+        Color cor = ColorP.getValue();
+        System.out.println(cor.toString());
+
         SceneController sc = new SceneController();
-        sc.switchToScene(event, "arena.fxml");
+        sc.switchToScene2(event, "arena.fxml", cor);
         Stage thisStage = (Stage) comboBox.getScene().getWindow();
         thisStage.close();
         thisStage = null;
@@ -68,42 +72,6 @@ public class SecondViewController implements Initializable {
         // TODO
         comboBox.getItems().addAll("Easy", "Hard");
         comboBox.getSelectionModel().selectFirst();
-    }
-
-    public void switchToScene(ActionEvent event, String s) {
-        Random r = new Random();
-
-        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-        int width = (int) screenBounds.getWidth();
-        int height = (int) screenBounds.getHeight();
-        Image img = new Image("/resources/images/background.png");
-
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(
-                    getClass().getResource(s)
-            );
-            Parent root = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.NONE);
-            stage.initStyle(StageStyle.DECORATED);
-            stage.setTitle("Snake Arena");
-            stage.getIcons().add(img);
-
-            // Aceder ao controlador da nova cena
-            GameViewController controller = fxmlLoader.getController();
-
-            controller.setCorSelecionada(ColorP.getValue());
-
-            //stage.setX(height);
-            stage.setScene(new Scene(root, 1120, 720));
-            //stage.setX(r.nextInt(width - (int) stage.getWidth()));
-            //stage.setY(r.nextInt(height - (int) stage.getHeight()));
-
-            stage.centerOnScreen();
-            stage.show();
-        } catch (Exception ex) {
-
-        }
     }
 
 }

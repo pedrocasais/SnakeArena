@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -76,10 +77,13 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private String nome;
     private Color cor;
     private String game;
-
+    
+    
     public void setCorSelecionada(Color cor) {
         this.cor = cor;
     }
+
+
     
     public void getScreenSize(Stage stage) {
 
@@ -328,6 +332,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             Scene sc = stage.getScene();
             sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
             genFruit();
+            
+            //System.out.println("AQUIR _>>>>>>>>>>>>>>>> "+cor.getValue());
 
             /*
             canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {

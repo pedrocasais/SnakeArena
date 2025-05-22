@@ -12,7 +12,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -110,11 +113,48 @@ public class SceneController {
             stage.setScene(new Scene(root, 1120, 720));
             //stage.setX(r.nextInt(width - (int) stage.getWidth()));
             //stage.setY(r.nextInt(height - (int) stage.getHeight()));
-                
+
             stage.centerOnScreen();
             stage.show();
         } catch (Exception ex) {
 
         }
     }
+
+    public void switchToScene2(ActionEvent event, String s,Color cor) {
+        Random r = new Random();
+
+        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+        int width = (int) screenBounds.getWidth();
+        int height = (int) screenBounds.getHeight();
+        Image img = new Image("/resources/images/background.png");
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                    getClass().getResource(s)
+            );
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.NONE);
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Snake Arena");
+            stage.getIcons().add(img);
+
+            // Aceder ao controlador da nova cena
+            GameViewController controller = fxmlLoader.getController();
+
+            controller.setCorSelecionada(cor);
+
+            //stage.setX(height);
+            stage.setScene(new Scene(root, 1120, 720));
+            //stage.setX(r.nextInt(width - (int) stage.getWidth()));
+            //stage.setY(r.nextInt(height - (int) stage.getHeight()));
+
+            stage.centerOnScreen();
+            stage.show();
+        } catch (Exception ex) {
+
+        }
+    }
+
 }

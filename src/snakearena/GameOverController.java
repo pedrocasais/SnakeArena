@@ -27,7 +27,7 @@ public class GameOverController implements Initializable {
     private void playAgain(ActionEvent event) {
 
         SceneController sc = new SceneController();
-        sc.switchToScene(event, "arena.fxml");
+        sc.switchToScene(event, "SecondView.fxml");
         Stage thisStage = (Stage) btn1.getScene().getWindow();
         thisStage.close();
         thisStage = null;
