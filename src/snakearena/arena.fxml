@@ -23,7 +23,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </FlowPane.margin>
             </Label>
-            <Label fx:id="showscore" textFill="#eaddbc">
+            <Label fx:id="showscore" text="0" textFill="#eaddbc">
                <padding>
                   <Insets top="10.0" />
                </padding>
