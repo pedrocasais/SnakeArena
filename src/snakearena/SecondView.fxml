@@ -67,7 +67,7 @@
                         <Font name="Consolas" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tF" opacity="0.2" prefHeight="25.0" prefWidth="140.0">
+                  <TextField fx:id="tF" opacity="0.2" prefHeight="25.0" prefWidth="140.0" styleClass="textField">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="55.0" top="10.0" />
                      </FlowPane.margin>

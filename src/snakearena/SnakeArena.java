@@ -4,6 +4,7 @@
  */
 package snakearena;
 
+import java.net.URL;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -22,28 +24,54 @@ public class SnakeArena extends Application {
 
     public static Scene scene;
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Imagem.fxml"));
+    // Add this as a class field
+private MediaPlayer mediaPlayer;
 
-        scene = new Scene(root, 1120, 720);
-        //scene.setFill(Color.BLACK)1;
-        stage.setTitle("Snake Arena");
+@Override
+public void start(Stage stage) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("Imagem.fxml"));
 
-        Image img = new Image("/resources/images/background.png");
-        stage.getIcons().add(img);
-        stage.setScene(scene);
+    scene = new Scene(root, 1120, 720);
+    //scene.setFill(Color.BLACK)1;
+    stage.setTitle("Snake Arena");
 
-        Media sound = new Media(getClass().getResource("/resources/music.mp3").toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.setAutoPlay(true);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        //mediaPlayer.play();
+    Image img = new Image("/resources/images/background.png");
+    stage.getIcons().add(img);
+    stage.setScene(scene);
+
+    // Improved music setup
+    try {
+        URL resource = getClass().getResource("/resources/music.mp3");
+        if (resource == null) {
+            System.err.println("Arquivo de música não encontrado: /resources/music.mp3");
+        } else {
+            Media sound = new Media(resource.toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
             
-        stage.show();
-        System.out.println(stage.widthProperty() + "\t" + stage.heightProperty());
+            // Set volume (0.0 to 1.0)
+            mediaPlayer.setVolume(0.5);
+            
+            // Configure looping
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            
+            // Play when ready
+            mediaPlayer.setOnReady(() -> mediaPlayer.play());
+            
+            // Stop music when application closes
+            stage.setOnCloseRequest(event -> {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                    mediaPlayer.dispose();
+                }
+            });
+        }
+    } catch (Exception e) {
+        System.err.println("Erro ao carregar ou reproduzir música: " + e.getMessage());
     }
 
+    stage.show();
+    System.out.println(stage.widthProperty() + "\t" + stage.heightProperty());
+}
     public static void main(String[] args) {
         launch(args);
     }
