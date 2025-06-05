@@ -21,9 +21,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn1" mnemonicParsing="false" onAction="#playAgain" prefHeight="60.0" prefWidth="180.0" text="play again" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="btn1" mnemonicParsing="false" onAction="#playAgain" prefHeight="60.0" prefWidth="180.0" text="Jogar" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
-                  <Font name="Consolas Bold" size="16.0" />
+                  <Font name="Consolas Bold" size="18.0" />
                </font>
             </Button>
             <Label text="GAME OVER" textFill="RED" GridPane.halignment="CENTER">
@@ -34,9 +34,9 @@
                   <Insets bottom="20.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#exitBtn" prefHeight="60.0" prefWidth="180.0" text="exit" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#exitBtn" prefHeight="60.0" prefWidth="180.0" text="Sair" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font name="Consolas Bold" size="16.0" />
+                  <Font name="Consolas Bold" size="18.0" />
                </font>
             </Button>
          </children>

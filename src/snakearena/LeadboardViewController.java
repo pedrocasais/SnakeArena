@@ -135,19 +135,19 @@ public class LeadboardViewController implements Initializable {
         }
 
         // Criação explícita das colunas para garantir que todas aparecem corretamente
-        TableColumn<Dados, Integer> posicaoCol = new TableColumn<>("posição");
+        TableColumn<Dados, Integer> posicaoCol = new TableColumn<>("Posição");
         posicaoCol.setCellValueFactory(new PropertyValueFactory<>("posicao"));
 
-        TableColumn<Dados, String> nomeCol = new TableColumn<>("nome");
+        TableColumn<Dados, String> nomeCol = new TableColumn<>("Nome");
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
-        TableColumn<Dados, Integer> pontuacaoCol = new TableColumn<>("pontuacao");
+        TableColumn<Dados, Integer> pontuacaoCol = new TableColumn<>("Pontuação");
         pontuacaoCol.setCellValueFactory(new PropertyValueFactory<>("pontuacao"));
 
-        TableColumn<Dados, String> dataCol = new TableColumn<>("data");
+        TableColumn<Dados, String> dataCol = new TableColumn<>("Data");
         dataCol.setCellValueFactory(new PropertyValueFactory<>("data"));
 
-        TableColumn<Dados, String> corCol = new TableColumn<>("cor");
+        TableColumn<Dados, String> corCol = new TableColumn<>("Cor");
         corCol.setCellValueFactory(new PropertyValueFactory<>("cor"));
         // Mostra um retângulo colorido na célula da cor
         corCol.setCellFactory(column -> new TableCell<Dados, String>() {
@@ -169,7 +169,7 @@ public class LeadboardViewController implements Initializable {
             }
         });
 
-        TableColumn<Dados, String> dificuldadeCol = new TableColumn<>("dificuldade");
+        TableColumn<Dados, String> dificuldadeCol = new TableColumn<>("Dificuldade");
         dificuldadeCol.setCellValueFactory(new PropertyValueFactory<>("dificuldade"));
 
         table.getColumns().setAll(posicaoCol, nomeCol, pontuacaoCol, dataCol, corCol, dificuldadeCol);

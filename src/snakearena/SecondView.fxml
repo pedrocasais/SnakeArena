@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="646.0" stylesheets="@../resources/secondview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.SecondViewController">
    <top>
-      <Label text="escolhbe cenas qui" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Label text="Configurações de jogo" textFill="#eaddbc" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
@@ -35,22 +35,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <ComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="140.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <ComboBox fx:id="comboBox" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="160.0" promptText="Dificuldade" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </ComboBox>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Cor da Cobra:" textFill="WHITE">
+                  <Label text="Cor da Cobra:" textFill="#eaddbc">
                      <FlowPane.margin>
                         <Insets />
                      </FlowPane.margin>
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Consolas Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ColorPicker fx:id="ColorP">
+                  <ColorPicker fx:id="ColorP" prefWidth="160.0">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="125.0" top="10.0" />
                      </FlowPane.margin>
@@ -62,12 +62,12 @@
             </FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label text="Nome:" textFill="WHITE">
+                  <Label text="Nome:" textFill="#eaddbc">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Consolas Bold" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tF" opacity="0.2" prefHeight="25.0" prefWidth="140.0" styleClass="textField">
+                  <TextField fx:id="tF" prefHeight="25.0" prefWidth="160.0" styleClass="textField">
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="55.0" top="10.0" />
                      </FlowPane.margin>

@@ -48,16 +48,21 @@ public class SecondViewController implements Initializable {
     
     @FXML
     private void handleBtn(ActionEvent event) {
-
-        if (tF.getText() == null) {
+        String nome = tF.getText();
+        String dificuldade = comboBox.getValue();
+        if (nome == null || nome.trim().isEmpty()) {
             tF.setText("Nome Obrigatório!");
+            return;
         }
-        
+        if (dificuldade == null || !(dificuldade.equals("Easy") || dificuldade.equals("Hard"))) {
+            comboBox.setPromptText("Escolha dificuldade");
+            return;
+        }
         Color cor = ColorP.getValue();
         System.out.println(cor.toString());
 
         SceneController sc = new SceneController();
-        sc.switchToScene2(event, "arena.fxml", cor,tF.getText(),comboBox.getValue());
+        sc.switchToScene2(event, "arena.fxml", cor, nome, dificuldade);
         Stage thisStage = (Stage) comboBox.getScene().getWindow();
         thisStage.close();
         thisStage = null;
@@ -82,7 +87,7 @@ public class SecondViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         comboBox.getItems().addAll("Easy", "Hard");
-        comboBox.getSelectionModel().selectFirst();
+        //comboBox.getSelectionModel().selectFirst();
     }
 
 }

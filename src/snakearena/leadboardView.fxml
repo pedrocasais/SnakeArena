@@ -10,7 +10,7 @@
 
 <BorderPane id="leadboard" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../resources/leadboardview.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakearena.LeadboardViewController">
    <top>
-      <Label text="LeadBoard" textFill="#eaddbc" BorderPane.alignment="CENTER">
+      <Label text="Pontuações" textFill="#eaddbc" BorderPane.alignment="CENTER">
          <font>
             <Font name="Consolas Bold" size="36.0" />
          </font>
