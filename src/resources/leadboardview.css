@@ -21,6 +21,17 @@
     -fx-background-position: center center;
 }
 
+.table-view, .table-row-cell, .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #eaddbc;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-font-family: "Consolas Bold", Consolas, monospace;
+}
+
 .text-area{
     -fx-text-fill: #eaddbc;
     -fx-border-width: 3px;

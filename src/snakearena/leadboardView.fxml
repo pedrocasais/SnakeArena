@@ -35,12 +35,12 @@
    <center>
       <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" stylesheets="@../resources/leadboardview.css" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="Posição" />
-          <TableColumn prefWidth="75.0" text="Nome" />
-            <TableColumn prefWidth="75.0" text="Pontuação" />
-            <TableColumn prefWidth="75.0" text="Data" />
-            <TableColumn prefWidth="75.0" text="Cor" />
-            <TableColumn prefWidth="75.0" text="Modo " />
+          <TableColumn id="#leadboard" prefWidth="75.0" style="-fx-background-color: #eaddbc;" styleClass="..\resources\leadboardview.css" text="Posição" />
+          <TableColumn prefWidth="75.0" style="-fx-background-color: #eaddbc;" text="Nome" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #eaddbc;" text="Pontuação" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #eaddbc;" text="Data" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #eaddbc;" text="Cor" />
+            <TableColumn prefWidth="75.0" style="-fx-background-color: #eaddbc;" text="Modo " />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

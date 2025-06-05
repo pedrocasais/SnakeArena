@@ -65,6 +65,9 @@ public class Dados {
         this.mode = mode;
     }
     
-    
-    
+    // Getters para TableView
+    public int getPosicao() { return pos; }
+    public int getPontuacao() { return pontos; }
+    public String getCor() { return cor; }
+    public String getDificuldade() { return mode; }
 }

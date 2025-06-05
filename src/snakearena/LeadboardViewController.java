@@ -19,9 +19,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -108,59 +111,69 @@ public class LeadboardViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-//        txArea.setText(string);
-        //writeFile("pedro,3000", "amarelo", "easy");
-        readFile();
-        ArrayList<String> a = new ArrayList<>();
-        a = readFile();
+        ArrayList<String> a = readFile();
 
- 
-
-
-        /* for (String i : a) {
-            System.out.println(i);
-        }*/
         a.sort((s1, s2) -> {
             int n1 = Integer.parseInt(s1.split(",")[1]);
             int n2 = Integer.parseInt(s2.split(",")[1]);
             return Integer.compare(n2, n1);
         });
 
-        int n = 1;
-
-        /* for (String i : a) {
-            System.out.println(i);
-        }
-        for (String i : a) {
-            txArea.appendText(n + ".\t" + i.replace(",", "\t\t") + "\n");
-            n++;
-        }
-        txArea.positionCaret(0);
-         */
         ObservableList<Dados> dados = FXCollections.observableArrayList();
 
         for (int i = 0; i < a.size(); i++) {
-            String linha = a.get(0).strip();  // Remove espaços no início/fim
+            String linha = a.get(i).strip();
             String[] partes = linha.split(",");
-
+            if (partes.length < 5) continue;
             String nome = partes[0];
             int pontuacao = Integer.parseInt(partes[1]);
             String data = partes[2];
-            String corHex = partes[3];
+            String Cor = partes[3];
             String dificuldade = partes[4];
-            Dados d = new Dados(i,nome,pontuacao,data,corHex,dificuldade);
+            Dados d = new Dados(i+1, nome, pontuacao, data, Cor, dificuldade);
             dados.add(d);
         }
 
-        ObservableList<TableColumn> colunas = table.getColumns();
+        // Criação explícita das colunas para garantir que todas aparecem corretamente
+        TableColumn<Dados, Integer> posicaoCol = new TableColumn<>("posição");
+        posicaoCol.setCellValueFactory(new PropertyValueFactory<>("posicao"));
 
-        //  tc1.setCellFactory(new PropertyValueFactory<>("inteiro"));
-        for (TableColumn c : colunas) {
-            c.setCellValueFactory(new PropertyValueFactory<>(c.getText()));
-        }
+        TableColumn<Dados, String> nomeCol = new TableColumn<>("nome");
+        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        TableColumn<Dados, Integer> pontuacaoCol = new TableColumn<>("pontuacao");
+        pontuacaoCol.setCellValueFactory(new PropertyValueFactory<>("pontuacao"));
+
+        TableColumn<Dados, String> dataCol = new TableColumn<>("data");
+        dataCol.setCellValueFactory(new PropertyValueFactory<>("data"));
+
+        TableColumn<Dados, String> corCol = new TableColumn<>("cor");
+        corCol.setCellValueFactory(new PropertyValueFactory<>("cor"));
+        // Mostra um retângulo colorido na célula da cor
+        corCol.setCellFactory(column -> new TableCell<Dados, String>() {
+            private final Rectangle rect = new Rectangle(30, 16);
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                } else {
+                    try {
+                        rect.setFill(Color.web(item));
+                    } catch (Exception e) {
+                        rect.setFill(Color.TRANSPARENT);
+                    }
+                    setGraphic(rect);
+                }
+                setText(null);
+            }
+        });
+
+        TableColumn<Dados, String> dificuldadeCol = new TableColumn<>("dificuldade");
+        dificuldadeCol.setCellValueFactory(new PropertyValueFactory<>("dificuldade"));
+
+        table.getColumns().setAll(posicaoCol, nomeCol, pontuacaoCol, dataCol, corCol, dificuldadeCol);
         table.setItems(dados);
-          
     }
 
 }
