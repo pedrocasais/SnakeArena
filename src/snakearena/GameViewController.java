@@ -362,10 +362,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
             final boolean[] gameStarted = {false};
 
-            // Set up key handler for game start
             sc.setOnKeyPressed(event -> {
                 if (!gameStarted[0]) {
-                    // First key press starts the game
                     gameStarted[0] = true;
                     genFruit();
 
@@ -373,10 +371,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
                     timeline.setCycleCount(Animation.INDEFINITE);
                     timeline.play();
 
-                    // Change handler to use game controls after start
                     sc.setOnKeyPressed((EventHandler<? super KeyEvent>) GameViewController.this);
                 } else {
-                    // Normal game key handling
                     handleKeyPress(event);
                 }
             });
