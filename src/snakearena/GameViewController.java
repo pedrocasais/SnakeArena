@@ -87,7 +87,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             ROWS = 30;
             COLUMNS = 30;
         } else {
-            ROWS =15;
+            ROWS = 15;
             COLUMNS = 15;
         }
 
@@ -123,7 +123,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             gc.setFill(Color.web(Cor));
             //gc.fillOval(p.x * (SQUARE_SIZE), p.y * (SQUARE_SIZE), SQUARE_SIZE, SQUARE_SIZE);
             gc.fillRoundRect(p.getX() * SQUARE_SIZE, p.getY() * SQUARE_SIZE, SQUARE_SIZE - 1,
-                    SQUARE_SIZE - 1, ROWS, COLUMNS);
+                    SQUARE_SIZE - 1, 15, 15);
         }
 
         /*        for (int i = 0; i < 4; i++) {
@@ -239,8 +239,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
     private void drawFruit() {
         //System.out.println("n1 -> " + n1 + " n2 -> " + n2);
-            for (int i = 0; i < fruits; i++) {
-           gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+        for (int i = 0; i < fruits; i++) {
+            gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
         }
         //gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
 
@@ -329,36 +329,57 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
             canvas.setFocusTraversable(true);
             canvas.requestFocus();
 
-            canvas.setWidth(width-SQUARE_SIZE);
-            canvas.setHeight(height-SQUARE_SIZE);
+            canvas.setWidth(width - SQUARE_SIZE);
+            canvas.setHeight(height - SQUARE_SIZE);
             getScreenSize(stage);
 
             //ArrayList<Point> c = new ArrayList<>();
             //c = firstSnake();
             //drawSnake("FFFFFF", c);
             s.setCorpo(firstSnake());
-
             s.setTam(s.getCorpo().size());
 
             gc = canvas.getGraphicsContext2D();
-            
+
+            drawMap();
+            drawSnake(cor.toString(), s.getCorpo());
+
+            String startMessage = "Clica numa tecla para começar!";
+            javafx.scene.text.Font messageFont = javafx.scene.text.Font.font("Consolas", javafx.scene.text.FontWeight.BOLD, 28);
+            gc.setFont(messageFont);
+
+
+
+            double centerX = width / 2  - 400;
+            double centerY = height / 2;
+
+            gc.setFill(Color.web("#f3520a"));  
+            gc.fillText(startMessage, centerX, centerY);
+
+
+
             Scene sc = stage.getScene();
-            sc.setOnKeyPressed((EventHandler<? super KeyEvent>) this);
-            genFruit();
 
-            //System.out.println("AQUIR _>>>>>>>>>>>>>>>> "+cor.getValue());
+            final boolean[] gameStarted = {false};
 
-            /*
-            canvas.sceneProperty().addListener((obs, oldScene, newScene) -> {
-                if (newScene != null) {
-                    newScene.setOnKeyPressed(this::handleKeyPress);
+            // Set up key handler for game start
+            sc.setOnKeyPressed(event -> {
+                if (!gameStarted[0]) {
+                    // First key press starts the game
+                    gameStarted[0] = true;
+                    genFruit();
+
+                    timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
+                    timeline.setCycleCount(Animation.INDEFINITE);
+                    timeline.play();
+
+                    // Change handler to use game controls after start
+                    sc.setOnKeyPressed((EventHandler<? super KeyEvent>) GameViewController.this);
+                } else {
+                    // Normal game key handling
+                    handleKeyPress(event);
                 }
             });
-             */
-            timeline = new Timeline(new KeyFrame(Duration.millis(130), e -> run()));
-            timeline.setCycleCount(Animation.INDEFINITE);
-            timeline.play();
-
         });
 
         // save on file
