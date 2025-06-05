@@ -83,7 +83,7 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
         this.game = gameMode;
 
         System.out.println(game);
-        if (game.equals("Hard")) {
+        if (game.equals("Easy")) {
             ROWS = 30;
             COLUMNS = 30;
         } else {
@@ -221,8 +221,8 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
     private void genFruit() {
 
         do {
-            n1 = r.nextInt(ROWS);
-            n2 = r.nextInt(COLUMNS);
+            n1 = r.nextInt(ROWS - 1);
+            n2 = r.nextInt(COLUMNS - 1);
             chooseImg();
             fruits++;
         } while (fruits < 4);
@@ -239,8 +239,10 @@ public class GameViewController implements Initializable, EventHandler<KeyEvent>
 
     private void drawFruit() {
         //System.out.println("n1 -> " + n1 + " n2 -> " + n2);
-
-        gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+            for (int i = 0; i < fruits; i++) {
+           gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+        }
+        //gc.drawImage(img, n1 * SQUARE_SIZE, n2 * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
 
     }
 
